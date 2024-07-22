@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { fetchData } from "./fetchData";
+import Sidebar from "./components/Sidebar";
+import Loading from "./components/Loading";
+// import axios from "axios";
 
-function App() {
+import data from "./data.json";
+
+
+
+function App() { 
+
+  const [loading, setLoading] = useState(false);
+  // const [data, setData] = useState(null);
+
+    //  useEffect(()=> {
+    //   fetchData().then(data => {
+    //     // console.log(data)
+    //     setData(data)
+    //     setLoading(false)
+    //   })
+    // }, [])
+      
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      {/* <div className="header">
+        header
+      </div> */}
+      
+      <div className="sidebar">
+       {loading ? <Loading/> : <Sidebar data={data}/>} 
+        
+      </div>
+      <div className="content">
+          content
+      </div>
     </div>
   );
+
+
+
+
+    
+
+
+  
+
 }
 
 export default App;
